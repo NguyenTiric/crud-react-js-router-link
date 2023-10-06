@@ -1,70 +1,19 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+// Mô tả chức năng:
+// - Component BasicTable là một bảng hiển thị thông tin của nhân viên.
+// - Component này sử dụng các thành phần từ thư viện MUI (Material-UI) để xây dựng giao diện.
+// - Các thông tin hiển thị trong bảng bao gồm: STT, Mã nhân viên, Tên nhân viên, Giới tính, Ngày sinh, Email, Số điện thoại, Chức vụ, Trạng thái, và các nút hoạt động (chi tiết, cập nhật, xóa/hoàn tác).
+// - Component sẽ gọi API để lấy danh sách nhân viên và danh sách chức vụ từ server.
+// - Component cũng hỗ trợ các chức năng như tìm kiếm, sắp xếp, phân trang, và thay đổi số lượng bản ghi trên mỗi trang.
+// - Khi người dùng thực hiện tìm kiếm, sắp xếp, hoặc thay đổi số lượng bản ghi trên mỗi trang, component sẽ gọi API để lấy danh sách nhân viên mới dựa trên các tham số tương ứng.
+// - Khi người dùng nhấn nút chi tiết, cập nhật, xóa/hoàn tác, component sẽ gọi API tương ứng để thực hiện các hành động tương ứng với nút đó.
+// - Component cũng hỗ trợ reset dữ liệu về trạng thái ban đầu.
+// - Component sử dụng các icon từ thư viện IconService để hiển thị biểu tượng cho các nút hoạt động.
+// - Component sử dụng thư viện dayjs để định dạng ngày tháng.
+// - Component sử dụng thư viện lodash để sắp xếp danh sách nhân viên dựa trên cấu hình sắp xếp.
+// - Component sử dụng hook useState để lưu trữ và cập nhật các giá trị state.
+// - Component sử dụng hook useEffect để gọi API và cập nhật dữ liệu khi có sự thay đổi trong các giá trị state.
+// - Component sử dụng hook useSearchParams để lấy và cập nhật các tham số tìm kiếm từ URL.
+// - Component sử dụng hook useNavigate để chuyển hướng đến các trang khác trong ứng dụng.
+// - Component sử dụng các thành phần từ thư viện MUI như Table, TableContainer, TableHead, TableRow, TableCell, TableBody, Paper, Button, Tooltip, Chip, InputAdornment, OutlinedInput, Box, Grid, Pagination, Avatar, MenuItem, Select, InputLabel, FormControl để xây dựng giao diện.
+// - Component sử dụng các hàm từ thư viện ChucVuService và HttpUtils để gọi API.
+// - Component sử dụng các biểu tượng từ thư viện IconService để hiển thị biểu tượng cho các nút hoạt động.
