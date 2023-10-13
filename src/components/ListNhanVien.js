@@ -294,7 +294,7 @@ const BasicTable = () => {
 										<Avatar
 											className="userProfile"
 											style={{width: "50px", height: "50px"}}
-											src={"https://www.facebook.com/photo/?fbid=177875548621011&set=pob.100091957005944"}
+											src={row?.anh}
 										/>
 										<p style={{marginLeft: "10px"}}>{row?.ten}</p>
 									</div>

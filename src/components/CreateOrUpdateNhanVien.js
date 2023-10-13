@@ -1,7 +1,7 @@
 // Import các thư viện và component cần thiết
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import {create, getOne, updateById} from "../service/HttpUtils";
+import {create, createImage, getOne, updateById, updateImageById} from "../service/HttpUtils";
 import {
 	Button,
 	FormControl,
@@ -16,6 +16,7 @@ import * as React from "react";
 import {useEffect, useState} from "react";
 import ChucVuService from "../service/ChucVuService";
 import {useNavigate, useParams} from "react-router-dom";
+import { Avatar } from "@files-ui/react";
 
 // Component CreateOrUpdateNhanVien
 const CreateOrUpdateNhanVien = () => {
@@ -23,6 +24,7 @@ const CreateOrUpdateNhanVien = () => {
 	const [listChucVu, setListChucVu] = useState([]);
 	const {id} = useParams();
 	const navigate  = useNavigate();
+	const [imageSource, setImageSource] = useState("");
 
 	// Hàm fetchDataChucVu để lấy danh sách chức vụ từ API
 	const fetchDataChucVu = async () => {
@@ -45,7 +47,7 @@ const CreateOrUpdateNhanVien = () => {
 	// Sử dụng hook useFormik để quản lý form và các trạng thái của form
 	const formik = useFormik({
 		initialValues: {
-			ma: "", ten: "", ngaySinh: "", gioiTinh: "", email: "", sdt: "",
+			ma: "", ten: "",anh: "", ngaySinh: "", gioiTinh: "", email: "", sdt: "",
 			chucVu: null
 		},
 		validationSchema: Yup.object({
@@ -55,6 +57,7 @@ const CreateOrUpdateNhanVien = () => {
 			ten: Yup.string().min(1,"Tên phải lớn hơn 1 kí tự")
 				.max(225,"Tên không dài quá 225 kí tự")
 				.required("Tên không được để trống"),
+			// anh: Yup.string().required("ảnh không để trống"),
 			sdt: Yup.string()
 				.required("Số điện thoại không được để trống"),
 			email: Yup.string().email("Email sai định dạng")
@@ -74,9 +77,9 @@ const CreateOrUpdateNhanVien = () => {
 		try {
 			let status;
 			if (formik.values.id) {
-				status = await updateById(formik.values.id, "nhan-vien", formik.values);
+				status = await updateImageById(formik.values.id, "nhan-vien", formik.values,imageSource);
 			} else {
-				status = await create("nhan-vien", formik.values);
+				status = await createImage("nhan-vien", formik.values,imageSource);
 			}
 			formik.resetForm();
 			navigate('/');
@@ -94,10 +97,16 @@ const CreateOrUpdateNhanVien = () => {
 		}));
 	};
 
+	const handleChangeSource = (selectedFile) => {
+		setImageSource(selectedFile);
+	};
+
 	// Render giao diện form
 	return(
 		<div>
 			<form onSubmit={formik.handleSubmit}>
+				{/*<input type={"file"} onChange={(event) => {setImageSource(event.target.files[0])}}/>*/}
+				<Avatar src={imageSource} alt="Avatar" onChange={handleChangeSource} />
 				<TextField
 					label="Mã"
 					variant="standard"
